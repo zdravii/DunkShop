@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Košarkaška prodavnica|DunkShop</title>
+        <link rel="stylesheet" href="assets/style.css" type="text/css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/ad51d15578.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    </head>
+    <body>
+        <div id="myModal" class="modalnone pb-4">
+          <div class="col-lg-6 mx-auto bg-white mt-4 pb-3">
+            <button type="button" id="myBtnClose" class="iks mt-1 me-2"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="text-center pt-3">Postani član naše zajednice!</h2>
+            <div class="containter">
+              <form action="index.php" method="post">
+                <div class="row justify-content-center">
+                  <div class="col-lg-9">
+                    <label for="ime" class="fs-5 mt-3">Ime :</label>
+                    <input type="text" name="ime" id="ime" class="input" size="63"/>
+                    <p id="regexime" class="regextextnone text-danger m-0">Ime mora početi velikim slovom i imati minimum tri slova!</p>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-lg-9">
+                    <label for="prezime" class="fs-5 mt-3">Prezime :</label>
+                    <input type="text" name="prezime" id="prezime" class="input" size="63"/>
+                    <p id="regexprezime" class="regextextnone text-danger m-0">Prezime mora početi velikim slovom i imati minimum četri slova!</p>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-lg-9">
+                    <label for="email" class="fs-5 mt-3">Email :</label>
+                    <input type="email" name="email" id="email" class="input" size="63"/>
+                    <p id="regexemail" class="regextextnone text-danger m-0">Email mora početi malim slovom i mora se završiti sa @gmail.com,@yahoo.com ili @hotmail.com!</p>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-lg-9">
+                    <label for="lozinka" class="fs-5 mt-3">Lozinka :</label>
+                    <input type="password" name="lozinka" id="lozinka" class="input" size="63"/>
+                    <p id="regexlozinka" class="regextextnone text-danger m-0">Lozinka mora imati barem jedno malo i veliko slovo,barem jednu cifru i barem jedan karakter!</p>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-lg-9">
+                    <label for="potvrdalozinke" class="fs-5 mt-3">Ponovo unesite lozinku :</label>
+                    <input type="password" name="potvrdalozinke" id="potvrdalozinke" class="input" size="63"/>
+                    <p id="regexpotvrdalozinke" class="regextextnone text-danger m-0">Unešena lozinka mora biti ista kao gore navedena!</p>
+                  </div>
+                </div>
+                <div class="row justify-content-start">
+                  <!-- <div class="col-lg-9 mx-auto mt-3"> -->
+                    <div id="poltext"><p class="p-0 fs-5 text-start m-0">Pol :</p></div>
+                    <div id="polradio" class="d-flex">
+                      <input type="radio" id="polm" name="pol" value="m" class="">
+                      <label for="polm" class="me-3  ms-1">Muški</label>
+                      <input type="radio" id="polz" name="pol" value="z" class="">
+                      <label for="polz" class=" ms-1">Ženski</label>
+                      <p id="regexpol" class="regextextnone text-danger m-0">Pol mora biti izabran!</p>
+                    </div>
+                </div>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-2 text-light mt-2" id="myBtnRegister">Registruj me</button>
+                  <p class="m-0 mt-3 mb-1">Već jesi član naše zajednice?</p>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-3 text-light" id="myBtnLog">Prijavi me</button>
+              </form>
+              </div>
+            </div>
+          </div>
+          <div id="myModalLog" class="modalnone">
+            <div class="col-lg-6 mx-auto bg-white mt-5 pb-3">
+              <button type="button" id="myBtnCloseLog" class="iks mt-1 me-2"><i class="fa-solid fa-xmark"></i></button>
+              <h2 class="text-center pt-3">Prijavi se!</h2>
+              <div class="containter">
+                <form action="index.php" method="post">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                      <label for="email" class="fs-5 mt-3">Email :</label>
+                      <input type="email" name="email" id="emailLog" class="input" size="63"/>
+                      <p id="regexemail" class="regextextnone text-danger m-0">Unet email nije ispravan!</p>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                      <label for="lozinka" class="fs-5 mt-3">Lozinka :</label>
+                      <input type="password" name="lozinka" id="lozinkaLog" class="input" size="63"/>
+                      <p id="regexemail" class="regextextnone text-danger m-0">Uneta sifra nije ispravna!</p>
+                    </div>
+                  </div>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-3 text-light mt-4" id="myBtnLogtwo">Prijavi me</button>
+                  <p class="m-0 mt-3 mb-1">Želiš da se pridružiš našoj zajednici?</p>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-2 text-light mt-1" id="myBtnRegistertwo">Registruj me</button>
+                </form>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row d-flex justify-content-center bg-black" id="before-h">
+            <!-- Dinamicki ispisan div iznad headera -->
+          </div>
+        </div>
+        <header class="container-fluid">
+            <div class="row d-flex mt-2">
+              <div class="col-lg-2 mx-auto">
+                <a href="#"><img src="assets/images/dunkshop-logo.png" alt="Logo" class="display-block ms-5"/></a>
+              </div>
+              <div class="col-lg-1 d-flex justify-content-evenly mt-2 pe-3">
+                <!-- Dinamicki ispisane ikonice -->
+                <div class="col-lg-2"><button type="button" id="myBtn" ><i class="fa-solid fa-user fs-4 text-dark"></i></button></div>
+                <div class="col-lg-2"><i class="fa-solid fa-cart-shopping fs-4"></i></i></div>
+              </div>
+            </div>
+        </header>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid justify-content-center text-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center border-top border-bottom" id="navbarNav">
+              <ul class="navbar-nav" id="myNav">
+                <!-- Dinamicki ispisana navigacija -->
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper" id="slider">
+                <!-- Dinamicki ispisan slider -->
+              </div>
+              <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+        <div class="container90" id="dresovilink">
+          <h2 class="mt-5 fw-bold text-center fs-1"><span class="green">FRESH</span> DRESOVI</h2>
+          <div class="row mt-5">
+            <div class="swiper mySwiperDresovi">
+              <div class="swiper-wrapper" id="dresovi">
+                <!-- Dinamicki ispisani dresovi -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row justify-content-evenly mt-5 pb-5">
+            <div class="col-lg-6" id="jordanretro"><h3 class="text-light ms-4">JORDAN <br/> RETRO</h3></div>
+            <div class="col-lg-6" id="lopte"><h3 class="text-light ms-4">LOPTE</h3></div>
+          </div>
+        </div>
+        <div class="container90" id="patikelink">
+          <h2 class="mt-5 fw-bold text-center fs-1"><span class="green">FRESH</span> PATIKE</h2>
+          <div class="row mt-5">
+            <div class="swiper mySwiperPatike">
+              <div class="swiper-wrapper" id="patike">
+                <!-- Dinamicki ispisani dresovi -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <h2 class="mt-5 text-center fw-bold" id="mesta">GDE NAS MOŽETE NAĆI</h2>
+          <div class="row justify-content-evenly mt-5 pb-5" id="mestajedan">
+            <!-- DINAMICKI ISPISANA MESTA -->
+          </div>
+        </div>
+        <div class="container90" id="dodacilink">
+          <h2 class="mt-5 fw-bold text-center fs-1">DODACI</h2>
+          <div class="row mt-5 pb-5">
+            <div class="swiper mySwiperDodaci">
+              <div class="swiper-wrapper" id="dodaci">
+                <!-- Dinamicki ispisani dresovi -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+        <footer>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="assets/main.js"></script>
+    </body>
+</html>
