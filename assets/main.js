@@ -47,214 +47,318 @@ const regexMail = /^[a-z]((\.|-|)?[a-z0-9]){2,}@[a-z]((\.|-|)?[a-z0-9]+){2,}\.[a
 
 const regexSifra =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()?])[A-Za-z\d!@#$%^&*()?]{8,}$/;
 
-// MODAL REGISTER __________________________________________________________________________________________________________________________________
-
-var myBtn = document.getElementById("myBtn");
-
-var myModal = document.getElementById("myModal");
-
-var mtBtnClose = document.getElementById("myBtnClose");
-
-var myBtnRegister = document.getElementById("myBtnRegister");
-
-myBtn.addEventListener("click",function()
-{
-    myModal.classList.remove("modalnone");
-    myModal.classList.add("modalblock");
-}
-)
-
-myBtnClose.addEventListener("click",function()
-{
-    myModal.classList.remove("modalblock");
-    myModal.classList.add("modalnone");
-}
-)
-
-// myBtnRegister.addEventListener("click",function()
+// function provera()
 // {
-//     myModal.classList.remove("modalblock");
-//     myModal.classList.add("modalnone");
+//     console.log(123);
+//     if(!regEx.test(input.value))
+//     {
+//         input.classList.add("borderred");
+//         input.nextElementSibling.classList.remove("d-none");
+//         input.nextElementSibling.classList.add("d-block");
+//     }
+//     else
+//     {
+//         input.classList.add("bordergreen");
+//         input.nextElementSibling.classList.remove("d-block");
+//         input.nextElementSibling.classList.add("d-none");
+//     }
 // }
-// )
 
-// PROVERA PODATAKA FORME ___________________________________________________________________________________________________________________________
+//  __________________________________________________________________________________________________________________________________
+// MODAL REGISTER __________________________________________________________________________________________________________________________________
+//  __________________________________________________________________________________________________________________________________
 
-// IME ______________________________________________________________________________________________________________________________________________
+var dugmeZaRegistracijuJedan = document.getElementById("dugmeZaRegistracijuJedan");
 
-var ime = document.getElementById("ime");
-var regexime = document.getElementById("regexime");
+var iks = document.getElementById("iks");
 
-myBtnRegister.addEventListener("click",function()
+var dugmeZaPrijavuJedan = document.getElementById("dugmeZaPrijavuJedan");
+
+var ikonicaPrijava = document.getElementById("ikonicaPrijava");
+
+var modalRegistracija = document.getElementById("modalRegistracija");
+
+var modalPrijava= document.getElementById("modalPrijava");
+
+var brojGresaka = 0;
+
+var brojGresakaPrijava = 0;
+// OTVARANJE I ZATVARANJE MODALA
+
+ikonicaPrijava.addEventListener("click",function()
 {
-    if(!regexIme.test(ime.value)){
-        ime.classList.add("borderred");
-        regexime.classList.remove("regextextnone");
-        regexime.classList.add("regextextblock");
-    }
-    else{
-        ime.classList.remove("borderred");
-        ime.classList.add("bordergreen");
-        regexime.classList.add("regextextnone");
-        regexime.classList.remove("regextextblock");
-    }
-    
+    modalRegistracija.classList.remove("modalnone");
+    modalRegistracija.classList.add("modalblock");
 }
 )
 
-// PREZIME  ____________________________________________________________________________________________________________________________________________
-
-var prezime = document.getElementById("prezime");
-var regexprezime = document.getElementById("regexprezime");
-
-myBtnRegister.addEventListener("click",function()
+iks.addEventListener("click",function()
 {
-    if(!regexPrezime.test(prezime.value)){
-        prezime.classList.add("borderred");
-        regexprezime.classList.remove("regextextnone");
-        regexprezime.classList.add("regextextblock");
+    modalRegistracija.classList.remove("modalblock");
+    modalRegistracija.classList.add("modalnone");
+}
+)
+dugmeZaPrijavuJedan.addEventListener("click",function()
+{
+    modalRegistracija.classList.remove("modalblock");
+    modalRegistracija.classList.add("modalnone");
+    modalPrijava.classList.remove("modalnone");
+    modalPrijava.classList.add("modalblock");
+}
+)
+
+
+// __________________________________________________________________________________________________________________________________________________
+// PROVERA IMENA REGISTRACIJA___________________________________________________________________________________________________________________________
+
+dugmeZaRegistracijuJedan.addEventListener("click",function()
+{
+    let inputImeRegistracija=document.getElementById("imeRegistracija");
+    let textImeRegistracija=document.getElementById("textImeRegistracija");
+    if(!regexIme.test(inputImeRegistracija.value))
+    {
+        inputImeRegistracija.classList.add("borderred");
+        textImeRegistracija.classList.remove("d-none");
+        textImeRegistracija.classList.add("d-block;");
+        brojGresaka++;
     }
-    else{
-        prezime.classList.remove("borderred");
-        prezime.classList.add("bordergreen");
-        regexprezime.classList.add("regextextnone");
-        regexprezime.classList.remove("regextextblock");
+    else
+    {
+        inputImeRegistracija.classList.remove("borderred");
+        inputImeRegistracija.classList.add("bordergreen");
+        textImeRegistracija.classList.remove("d-block");
+        textImeRegistracija.classList.add("d-none");
+        brojGresaka--;
+    }
+}
+);
+
+// __________________________________________________________________________________________________________________________________________________
+// PROVERA PREZIMENA REGISTRACIJA___________________________________________________________________________________________________________________________
+
+dugmeZaRegistracijuJedan.addEventListener("click",function()
+{
+    let inputPrezimeRegistracija=document.getElementById("prezimeRegistracija");
+    let textPrezimeRegistracija=document.getElementById("textPrezimeRegistracija");
+    if(!regexPrezime.test(inputPrezimeRegistracija.value))
+    {
+        inputPrezimeRegistracija.classList.add("borderred");
+        textPrezimeRegistracija.classList.remove("d-none");
+        textPrezimeRegistracija.classList.add("d-block;");
+        brojGresaka++;
+    }
+    else
+    {
+        inputPrezimeRegistracija.classList.remove("borderred");
+        inputPrezimeRegistracija.classList.add("bordergreen");
+        textPrezimeRegistracija.classList.remove("d-block");
+        textPrezimeRegistracija.classList.add("d-none");
+        brojGresaka--;
+    }
+}
+);
+
+// __________________________________________________________________________________________________________________________________________________
+// PROVERA EMAILA REGISTRACIJA___________________________________________________________________________________________________________________________
+
+dugmeZaRegistracijuJedan.addEventListener("click",function()
+{
+    let inputEmailRegistracija=document.getElementById("emailRegistracija");
+    let textEmailRegistracija=document.getElementById("textEmailRegistracija");
+    if(!regexMail.test(inputEmailRegistracija.value))
+    {
+        inputEmailRegistracija.classList.add("borderred");
+        textEmailRegistracija.classList.remove("d-none");
+        textEmailRegistracija.classList.add("d-block;")
+        brojGresaka++;
+    }
+    else
+    {
+        inputEmailRegistracija.classList.remove("borderred");
+        inputEmailRegistracija.classList.add("bordergreen");
+        textEmailRegistracija.classList.remove("d-block");
+        textEmailRegistracija.classList.add("d-none");
+        brojGresaka--;
+    }
+}
+);
+
+// __________________________________________________________________________________________________________________________________________________
+// PROVERA SIFRE REGISTRACIJA___________________________________________________________________________________________________________________________
+
+var inputLozinkaRegistracija=document.getElementById("lozinkaRegistracija");
+
+dugmeZaRegistracijuJedan.addEventListener("click",function()
+{
+    let textLozinkaRegistracija=document.getElementById("textLozinkaRegistracija");
+    if(!regexSifra.test(inputLozinkaRegistracija.value))
+    {
+        inputLozinkaRegistracija.classList.add("borderred");
+        textLozinkaRegistracija.classList.remove("d-none");
+        textLozinkaRegistracija.classList.add("d-block;");
+        brojGresaka++;
+    }
+    else
+    {
+        inputLozinkaRegistracija.classList.remove("borderred");
+        inputLozinkaRegistracija.classList.add("bordergreen");
+        textLozinkaRegistracija.classList.remove("d-block");
+        textLozinkaRegistracija.classList.add("d-none");
+        brojGresaka--;
+    }
+}
+);
+
+// __________________________________________________________________________________________________________________________________________________
+// PROVERA POTVRDA SIFRE REGISTRACIJA___________________________________________________________________________________________________________________________
+
+dugmeZaRegistracijuJedan.addEventListener("click",function()
+{
+    let inputPotvrdaLozinkeRegistracija=document.getElementById("potvrdaLozinkeRegistracija");
+    if(inputLozinkaRegistracija.value!=inputPotvrdaLozinkeRegistracija.value || inputPotvrdaLozinkeRegistracija.value=="")
+    {
+        inputPotvrdaLozinkeRegistracija.classList.add("borderred");
+        inputPotvrdaLozinkeRegistracija.nextElementSibling.classList.remove("d-none");
+        inputPotvrdaLozinkeRegistracija.nextElementSibling.classList.add("d-block");
+        brojGresaka++;
+    }
+    else
+    {
+        inputPotvrdaLozinkeRegistracija.classList.remove("borderred");
+        inputPotvrdaLozinkeRegistracija.classList.add("bordergreen");
+        inputPotvrdaLozinkeRegistracija.nextElementSibling.classList.remove("d-block");
+        inputPotvrdaLozinkeRegistracija.nextElementSibling.classList.add("d-none");
+        brojGresaka--;
+    }
+}
+);
+
+// 
+
+dugmeZaRegistracijuJedan.addEventListener("click",function()
+{
+    if(brojGresaka<=0){
+        modalRegistracija.classList.remove("modalblock");
+        modalRegistracija.classList.add("modalnone");
     }
 }
 )
 
-// EMAIL  ______________________________________________________________________________________________________________________________________________
+// __________________________________________________________________________________________________________________________________________________
+// PROVERA POLA REGISTRACIJA___________________________________________________________________________________________________________________________
 
-var email = document.getElementById("email");
-var regexemail = document.getElementById("regexemail");
+var inputRadio=document.getElementsByTagName("pol");
 
-myBtnRegister.addEventListener("click",function()
-{
-    if(!regexMail.test(email.value)){
-        email.classList.add("borderred");
-        regexemail.classList.remove("regextextnone");
-        regexemail.classList.add("regextextblock");
-    }
-    else{
-        email.classList.remove("borderred");
-        email.classList.add("bordergreen");
-        regexemail.classList.add("regextextnone");
-        regexemail.classList.remove("regextextblock");
-    }
-}
-)
+var polText=document.getElementById("polText");
 
-// SIFRA  _____________________________________________________________________________________________________________________________________________
-
-var sifra = document.getElementById("lozinka");
-var regexlozinka = document.getElementById("regexlozinka");
-
-myBtnRegister.addEventListener("click",function()
-{
-    if(!regexSifra.test(sifra.value)){
-        sifra.classList.add("borderred");
-        regexlozinka.classList.remove("regextextnone");
-        regexlozinka.classList.add("regextextblock");
-    }
-    else{
-        sifra.classList.remove("borderred");
-        sifra.classList.add("bordergreen");
-        regexlozinka.classList.add("regextextnone");
-        regexlozinka.classList.remove("regextextblock");
-    }
-}
-)
-
-// POTVRDA SIFRE  _____________________________________________________________________________________________________________________________________
-
-var potvrdasifre = document.getElementById("potvrdalozinke");
-var regexpotvrdalozinka = document.getElementById("regexpotvrdalozinke");
-
-myBtnRegister.addEventListener("click",function()
-{
-    if(sifra.value != potvrdasifre.value || potvrdasifre.value==""){
-        potvrdasifre.classList.add("borderred");
-        regexpotvrdalozinke.classList.remove("regextextnone");
-        regexpotvrdalozinke.classList.add("regextextblock");
-    }
-    else{
-        potvrdasifre.classList.remove("borderred");
-        potvrdasifre.classList.add("bordergreen");
-        regexpotvrdalozinke.classList.add("regextextnone");
-        regexpotvrdalozinke.classList.remove("regextextblock");
-    }
-}
-)
-
-// RADIO  ____________________________________________________________________________________________________________________________________________
-
-var pol = document.getElementsByName("pol");
-var regexpol = document.getElementById("regexpol");
-
-myBtnRegister.addEventListener("click",function()
+dugmeZaRegistracijuJedan.addEventListener("click",function()
 {
     let statusVrednost = "";
-    for(let i = 0; i < pol.length; i++){
-        if(pol[i].checked){
-            statusVrednost = pol[i].value;
+    for(let i = 0; i < inputRadio.length; i++){
+        if(inputRadio[i].checked){
+            statusVrednost = inputRadio[i].value;
             break;
         }
     }
-    if(statusVrednost){
-        regexpol.classList.remove("regextextnone");
-        regexpol.classList.add("regextextblock");
+    if(statusVrednost)
+    {
+        inputRadio.classList.add("accent-color");
+        polText.nextElementSibling.classList.remove("d-none");
+        polText.nextElementSibling.classList.add("d-block");
+    }
+    else
+    {   
     }
 }
 )
 
-// MODAL LOGIN _______________________________________________________________________________________________________________________________________
+// MODAL PRIJAVA _______________________________________________________________________________________________________________________________________
+// //  __________________________________________________________________________________________________________________________________
 
-var myModalLog = document.getElementById("myModalLog");
+var iksPrijava = document.getElementById("iksPrijava");
 
-var myBtnLog = document.getElementById("myBtnLog");
-
-var myBtnCloseLog = document.getElementById("myBtnCloseLog");
-
-
-
-myBtnLog.addEventListener("click",function()
+iksPrijava.addEventListener("click",function()
 {
-    myModal.classList.remove("modalblock");
-    myModal.classList.add("modalnone");
-    myModalLog.classList.remove("modalnone");
-    myModalLog.classList.add("modalblock");
+    modalPrijava.classList.remove("modalblock");
+    modalPrijava.classList.add("modalnone");
 }
 )
 
-myBtnCloseLog.addEventListener("click",function()
+var dugmeZaPrijavuDva = document.getElementById("dugmeZaPrijavuDva");
+
+var dugmeZaRegistracijuDva = document.getElementById("dugmeZaRegistracijuDva");
+
+dugmeZaRegistracijuDva.addEventListener("click",function()
 {
-    myModalLog.classList.remove("modalblock");
-    myModalLog.classList.add("modalnone");
+    modalPrijava.classList.remove("modalblock");
+    modalPrijava.classList.add("modalnone");
+    modalRegistracija.classList.remove("modalnone");
+    modalRegistracija.classList.add("modalblock");
 }
 )
 
-myBtnLogtwo.addEventListener("click",function()
+// // PROVERA PODATAKA FORME ZA PRIJAVU ___________________________________________________________________________________________________________________________
+
+// // EMAIL  ______________________________________________________________________________________________________________________________________________
+
+dugmeZaPrijavuDva.addEventListener("click",function()
 {
-    myModalLog.classList.remove("modalblock");
-    myModalLog.classList.add("modalnone");
+    let emailPrijava = document.getElementById("emailPrijava");
+    let textEmailPrijava = document.getElementById("textEmailPrijava");
+    if(!regexMail.test(emailPrijava.value))
+    {
+        emailPrijava.classList.add("borderred");
+        textEmailPrijava.classList.remove("d-none");
+        textEmailPrijava.classList.add("d-block");
+        brojGresakaPrijava++;
+    }
+    else
+    {
+        emailPrijava.classList.add("bordergreen");
+        textEmailPrijava.classList.remove("d-block");
+        textEmailPrijava.classList.add("d-none");
+        brojGresakaPrijava=0;
+    }
 }
 )
 
-myBtnRegistertwo.addEventListener("click",function()
+// // SIFRA  _____________________________________________________________________________________________________________________________________________
+
+dugmeZaPrijavuDva.addEventListener("click",function()
 {
-    myModal.classList.add("modalblock");
-    myModal.classList.remove("modalnone");
-    myModalLog.classList.add("modalnone");
-    myModalLog.classList.remove("modalblock");
+    let lozinkaPrijava=document.getElementById("lozinkaPrijava");
+    let textLozinkaPrijava=document.getElementById("textLozinkaPrijava");
+    if(!regexSifra.test(lozinkaPrijava.value))
+    {
+        lozinkaPrijava.classList.add("borderred");
+        textLozinkaPrijava.classList.remove("d-none");
+        textLozinkaPrijava.classList.add("d-block");
+        brojGresakaPrijava++;
+    }
+    else
+    {
+        lozinkaPrijava.classList.add("bordergreen");
+        textLozinkaPrijava.classList.remove("d-block");
+        textLozinkaPrijava.classList.add("d-none");
+        brojGresakaPrijava=0;
+    }
 }
 )
 
-
+dugmeZaPrijavuDva.addEventListener("click",function()
+{
+    if(brojGresakaPrijava==0)
+    {
+        modalPrijava.classList.remove("modalblock");
+        modalPrijava.classList.add("modalnone");
+    }
+}
+)
 
 // DIV ZA NAVIGACIJU ___________________________________________________________________________________________________________________________________
 
-var navPath = [`#dresovilink`,'#patikelink','#dodacilink','#oautoru.html',`#`];
-var navName = [`Dresovi`,`Patike`,`Dodaci`,`Brendovi`,`Autor`];
+var navPath = [`#dresovilink`,'#patikelink','#dodacilink','oautoru.html'];
+var navName = [`Dresovi`,`Patike`,`Dodaci`,`Autor`];
 var navContent = "";
 
 for (let i=0;i<navPath.length;i++) {
@@ -556,7 +660,7 @@ var mesta = [
 var mestaContent="";
 
 for (const obj of mesta) {
-    mestaContent += `<div class="col-lg-4 p-0 m-0" id="${obj.id}"><div class="tamno"><h3 class="text-light fs-1">${obj.h3}</h3><p class="text-light fs-2">${obj.p}</p></div></div>`
+    mestaContent += `<div class="col-10 col-md-3 p-0 m-0" id="${obj.id}"><div class="tamno"><h3 class="text-light fs-1">${obj.h3}</h3><p class="text-light fs-2">${obj.p}</p></div></div>`
 }
 
 document.getElementById("mestajedan").innerHTML=mestaContent;
@@ -661,22 +765,104 @@ let swiperDodaci = new Swiper(".mySwiperDodaci", {
     },
     breakpoints:{
         992:{
-            slidesPerView:5
+            slidesPerView:5,
+            spaceBetween:30
         },
         768:{
-            slidesPerView:4
+            slidesPerView:4,
+            spaceBetween:36
         },
         600:{
-            slidesPerView:3
+            slidesPerView:3,
+            spaceBetween:42
         },
         425:{
-            slidesPerView:3
+            slidesPerView:2,
+            spaceBetween:48
         },
         375:{
-            slidesPerView:2
+            slidesPerView:2,
+            spaceBetween:48
         },
         325:{
-            slidesPerView:2
+            slidesPerView:2,
+            spaceBetween:48
         }
     }
   });
+
+var footerLinkovi = [`Privatnost i kolačići`,`Dostava`,`Uslovi korišćenja i prodaje`,`Zamene`,`Reklamacije`,`Pravo na odustajanje`,`Namena i održavanje odeće`];
+
+var footerLinkoviContent= ""
+
+for (const text of footerLinkovi) {
+    footerLinkoviContent+=`<li><a href="#">${text}</a></li>`
+}
+document.getElementById("footerLinkoviJedan").innerHTML=footerLinkoviContent
+
+var footerLinkoviDva = [`Podaci o pravnom licu`,`Tabela veličina`];
+
+var footerLinkoviDvaContent= ""
+
+for (const text of footerLinkoviDva) {
+    footerLinkoviDvaContent+=`<li><a href="#">${text}</a></li>`
+}
+document.getElementById("footerLinkoviDva").innerHTML=footerLinkoviDvaContent
+
+var footerLinkoviTri = [`Besplatna dostava*`,`Dostava u celoj RS traje 2-4 dana`,`Brzi odgovori`,`Korisnička podrška`,`Promocija bball kulture`];
+
+var footerLinkoviTriContent= ""
+
+for (const text of footerLinkoviTri) {
+    footerLinkoviTriContent+=`<li><a href="#">${text}</a></li>`
+}
+document.getElementById("footerLinkoviTri").innerHTML=footerLinkoviTriContent
+
+console.log("1");
+
+
+var footerKartice = [
+    {
+        src:`assets/images/american-express-credit.jpg`,
+        alt:`American express kartica`
+    },
+    {
+        src:`assets/images/discover-card-logo.png`,
+        alt:`Discover kartica`
+    },
+    {
+        src:`assets/images/klarna-logo.png`,
+        alt:`Klarna kartica`
+    },
+    {
+        src:`assets/images/Visa-Logo-card.png`,
+        alt:`Visa kartica`
+    }
+]
+
+var footerKarticeContent="";
+
+for (const content of footerKartice) {
+    footerKarticeContent+=`<div class="col-3"><img src="${content.src}" alt="${content.alt}"></div>`
+}
+
+document.getElementById("footerKarticeJedan").innerHTML=footerKarticeContent;
+
+var footerKarticeDva = [
+    {
+        src:`assets/images/MasterCard.png`,
+        alt:`MasterCard kartica`
+    },
+    {
+        src:`assets/images/paypal-logo-card.png`,
+        alt:`Pay pal`
+    }
+]
+
+var footerKarticeDvaContent="";
+
+for (const content of footerKarticeDva) {
+    footerKarticeDvaContent+=`<div class="col-3"><img src="${content.src}" alt="${content.alt}" class="d-block"></div>`
+}
+
+document.getElementById("footerKarticeDva").innerHTML=footerKarticeDvaContent;

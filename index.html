@@ -9,45 +9,48 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     </head>
     <body>
-        <div id="myModal" class="modalnone pb-4">
+      <!--  -->
+      <!-- MODAL REGISTRACIJE -->
+      <!--  -->
+        <div id="modalRegistracija" class="modalnone pb-4">
           <div class="col-lg-6 mx-auto bg-white mt-4 pb-3">
-            <button type="button" id="myBtnClose" class="iks mt-1 me-2"><i class="fa-solid fa-xmark"></i></button>
+            <button type="button" id="iks" class="iks mt-1 me-2"><i class="fa-solid fa-xmark"></i></button>
             <h2 class="text-center pt-3">Postani član naše zajednice!</h2>
             <div class="containter">
               <form action="index.php" method="post">
                 <div class="row justify-content-center">
                   <div class="col-lg-9">
                     <label for="ime" class="fs-5 mt-3">Ime :</label>
-                    <input type="text" name="ime" id="ime" class="input" size="63"/>
-                    <p id="regexime" class="regextextnone text-danger m-0">Ime mora početi velikim slovom i imati minimum tri slova!</p>
+                    <input type="text" name="ime" id="imeRegistracija" class="input" size="63"/>
+                    <p id="textImeRegistracija" class="d-none text-danger m-0">Ime mora početi velikim slovom i imati minimum tri slova!</p>
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-lg-9">
                     <label for="prezime" class="fs-5 mt-3">Prezime :</label>
-                    <input type="text" name="prezime" id="prezime" class="input" size="63"/>
-                    <p id="regexprezime" class="regextextnone text-danger m-0">Prezime mora početi velikim slovom i imati minimum četri slova!</p>
+                    <input type="text" name="prezime" id="prezimeRegistracija" class="input" size="63"/>
+                    <p id="textPrezimeRegistracija" class="d-none text-danger m-0">Prezime mora početi velikim slovom i imati minimum četri slova!</p>
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-lg-9">
                     <label for="email" class="fs-5 mt-3">Email :</label>
-                    <input type="email" name="email" id="email" class="input" size="63"/>
-                    <p id="regexemail" class="regextextnone text-danger m-0">Email mora početi malim slovom i mora se završiti sa @gmail.com,@yahoo.com ili @hotmail.com!</p>
+                    <input type="email" name="email" id="emailRegistracija" class="input" size="63"/>
+                    <p id="textEmailRegistracija" class="d-none text-danger m-0">Email mora početi malim slovom i mora se završiti sa @gmail.com,@yahoo.com ili @hotmail.com!</p>
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-lg-9">
                     <label for="lozinka" class="fs-5 mt-3">Lozinka :</label>
-                    <input type="password" name="lozinka" id="lozinka" class="input" size="63"/>
-                    <p id="regexlozinka" class="regextextnone text-danger m-0">Lozinka mora imati barem jedno malo i veliko slovo,barem jednu cifru i barem jedan karakter!</p>
+                    <input type="password" name="lozinka" id="lozinkaRegistracija" class="input" size="63"/>
+                    <p id="textLozinkaRegistracija" class="d-none text-danger m-0">Lozinka mora imati barem jedno malo i veliko slovo,barem jednu cifru i barem jedan karakter!</p>
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-lg-9">
                     <label for="potvrdalozinke" class="fs-5 mt-3">Ponovo unesite lozinku :</label>
-                    <input type="password" name="potvrdalozinke" id="potvrdalozinke" class="input" size="63"/>
-                    <p id="regexpotvrdalozinke" class="regextextnone text-danger m-0">Unešena lozinka mora biti ista kao gore navedena!</p>
+                    <input type="password" name="potvrdalozinke" id="potvrdaLozinkeRegistracija" class="input" size="63"/>
+                    <p class="d-none text-danger m-0">Unešena lozinka mora biti ista kao gore navedena!</p>
                   </div>
                 </div>
                 <div class="row justify-content-start">
@@ -58,43 +61,56 @@
                       <label for="polm" class="me-3  ms-1">Muški</label>
                       <input type="radio" id="polz" name="pol" value="z" class="">
                       <label for="polz" class=" ms-1">Ženski</label>
-                      <p id="regexpol" class="regextextnone text-danger m-0">Pol mora biti izabran!</p>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-lg-9">
+                        <p id="polText" class="d-none text-danger m-0 text-start ps-4">Pol mora biti izabran!</p>
+                      </div>
                     </div>
                 </div>
-                  <button type="button" class="d-block mx-auto bg-black py-1 px-2 text-light mt-2" id="myBtnRegister">Registruj me</button>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-2 text-light mt-2" id="dugmeZaRegistracijuJedan">Registruj me</button>
                   <p class="m-0 mt-3 mb-1">Već jesi član naše zajednice?</p>
-                  <button type="button" class="d-block mx-auto bg-black py-1 px-3 text-light" id="myBtnLog">Prijavi me</button>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-3 text-light" id="dugmeZaPrijavuJedan">Prijavi me</button>
               </form>
               </div>
             </div>
           </div>
-          <div id="myModalLog" class="modalnone">
+          <!--  -->
+          <!-- MODAL REGISTRACIJE -->
+          <!--  -->
+          <!--  -->
+          <!-- MODAL PRIJAVE -->
+          <!--  -->
+          <div id="modalPrijava" class="modalnone">
             <div class="col-lg-6 mx-auto bg-white mt-5 pb-3">
-              <button type="button" id="myBtnCloseLog" class="iks mt-1 me-2"><i class="fa-solid fa-xmark"></i></button>
+              <button type="button" id="iksPrijava" class="iks mt-1 me-2"><i class="fa-solid fa-xmark"></i></button>
               <h2 class="text-center pt-3">Prijavi se!</h2>
               <div class="containter">
                 <form action="index.php" method="post">
                   <div class="row justify-content-center">
                     <div class="col-lg-9">
                       <label for="email" class="fs-5 mt-3">Email :</label>
-                      <input type="email" name="email" id="emailLog" class="input" size="63"/>
-                      <p id="regexemail" class="regextextnone text-danger m-0">Unet email nije ispravan!</p>
+                      <input type="email" name="email" id="emailPrijava" class="input" size="63"/>
+                      <p id="textEmailPrijava" class="d-none text-danger m-0">Unet email nije ispravan!</p>
                     </div>
                   </div>
                   <div class="row justify-content-center">
                     <div class="col-lg-9">
                       <label for="lozinka" class="fs-5 mt-3">Lozinka :</label>
-                      <input type="password" name="lozinka" id="lozinkaLog" class="input" size="63"/>
-                      <p id="regexemail" class="regextextnone text-danger m-0">Uneta sifra nije ispravna!</p>
+                      <input type="password" name="lozinka" id="lozinkaPrijava" class="input" size="63"/>
+                      <p id="textLozinkaPrijava" class="d-none text-danger m-0">Uneta sifra nije ispravna!</p>
                     </div>
                   </div>
-                  <button type="button" class="d-block mx-auto bg-black py-1 px-3 text-light mt-4" id="myBtnLogtwo">Prijavi me</button>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-3 text-light mt-4" id="dugmeZaPrijavuDva">Prijavi me</button>
                   <p class="m-0 mt-3 mb-1">Želiš da se pridružiš našoj zajednici?</p>
-                  <button type="button" class="d-block mx-auto bg-black py-1 px-2 text-light mt-1" id="myBtnRegistertwo">Registruj me</button>
+                  <button type="button" class="d-block mx-auto bg-black py-1 px-2 text-light mt-1" id="dugmeZaRegistracijuDva">Registruj me</button>
                 </form>
             </div>
           </div>
         </div>
+        <!--  -->
+        <!-- MODAL PRIJAVA -->
+        <!--  -->
         <div class="container-fluid">
           <div class="row d-flex justify-content-center bg-black" id="before-h">
             <!-- Dinamicki ispisan div iznad headera -->
@@ -102,12 +118,12 @@
         </div>
         <header class="container-fluid">
             <div class="row d-flex mt-2">
-              <div class="col-lg-2 mx-auto">
-                <a href="#"><img src="assets/images/dunkshop-logo.png" alt="Logo" class="display-block ms-5"/></a>
+              <div class="col-lg-2 col-md-3 mx-auto">
+                <a href="#"><img src="assets/images/dunkshop-logo.png" alt="Logo" class="ms-lg-5"/></a>
               </div>
               <div class="col-lg-1 d-flex justify-content-evenly mt-2 pe-3">
                 <!-- Dinamicki ispisane ikonice -->
-                <div class="col-lg-2"><button type="button" id="myBtn" ><i class="fa-solid fa-user fs-4 text-dark"></i></button></div>
+                <div class="col-lg-2"><button type="button" id="ikonicaPrijava" ><i class="fa-solid fa-user fs-4 text-dark"></i></button></div>
                 <div class="col-lg-2"><i class="fa-solid fa-cart-shopping fs-4"></i></i></div>
               </div>
             </div>
@@ -145,8 +161,8 @@
         </div>
         <div class="container-fluid">
           <div class="row justify-content-evenly mt-5 pb-5">
-            <div class="col-lg-6" id="jordanretro"><h3 class="text-light ms-4">JORDAN <br/> RETRO</h3></div>
-            <div class="col-lg-6" id="lopte"><h3 class="text-light ms-4">LOPTE</h3></div>
+            <div class="col-md-6" id="jordanretro"><h3 class="text-light ms-4">JORDAN <br/> RETRO</h3></div>
+            <div class="col-md-6" id="lopte"><h3 class="text-light ms-4">LOPTE</h3></div>
           </div>
         </div>
         <div class="container90" id="patikelink">
@@ -177,7 +193,38 @@
             </div>
           </div>
         </div>
-        <footer>
+        <footer class="bg-black container-fluid pt-4">
+          <div id="footerholder" class="row justify-content-evenly mx-auto">
+            <div class="col-lg-3 col-md-5 col-10">
+              <h3 class="fs-4">SLUŽBA ZA KORISNIKE</h3>
+              <ul class="p-0" id="footerLinkoviJedan">
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-5 col-10">
+              <h3 class="fs-4">O NAMA</h3>
+                <ul class="p-0" id="footerLinkoviDva">
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-5 col-10">
+              <h3 class="fs-4">METODE PLAĆANJA</h3>
+              <div class="row" id="footerKarticeJedan">
+              </div>
+              <div class="row mt-4" id="footerKarticeDva">
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-10">
+              <h3 class="fs-4">ZAŠTO DUNK SHOP </h3>
+              <ul class="p-0" id="footerLinkoviTri">
+              </ul>
+            </div>
+          </div>
+          <div class="row mt-4 pb-4">
+            <div id="links" class="col-lg-5 mx-auto d-flex justify-content-evenly">
+              <a class="" href="">Terms and conditions</a> |
+              <a href="">Protection of privacy</a> |
+              <a href="">Dokumentacija</a>
+            </div>
+          </div>
         </footer>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

@@ -78,7 +78,7 @@ img{
 .modalblock{
     display: block;
 }
-#myModal,#myModalLog{
+#modalRegistracija,#modalPrijava{
     background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
     width: 100%;
@@ -121,9 +121,22 @@ button{
 .bordergreen{
     border: 2px solid green;
 }
-.regextextblock{
-    display:block;
+.accent-color{
+    accent-color: red;
 }
-.regextextnone{
-    display:none;
+#footerholder{
+    width: 85%;
+}
+footer h3{
+    color: white;
+}
+footer ul{
+    list-style-type:none;
+}
+footer ul li a,#links a{
+    text-decoration: none;
+    color: white;
+}
+#Autor{
+    width: 80%;
 }
