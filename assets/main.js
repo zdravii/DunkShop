@@ -1,41 +1,7 @@
-// DIV PRE HEADERA
-var beforeHText = [ 
-    {
-        icon:`<i class="fa-solid fa-globe mt-1 me-2 text-light mr-1"></i>`,
-        text:`Brza isporuka`
-    },
-    {
-        icon:`<i class="fa-solid fa-basketball mt-1 me-2 text-light mr-1"></i>`,
-        text:`Premium oprema`
-    },
-    {
-        icon:`<i class="fa-solid fa-rotate mt-1 me-2 text-light"></i>`,
-        text:`30-dana proces povratka`
-    }
-];
+var prefikslink = "/DunkShop";
+if(window.location.pathname==prefikslink+"/index.html" || window.location.pathname==prefikslink+'/')
+{
 
-var beforeHContent = "";
-
-for (const obj of beforeHText) {
-    beforeHContent+=`<div class="col-lg-3 d-flex justify-content-center pt-3">
-                    ${obj.icon}
-                    <p class="text-light">${obj.text}</p>
-                    </div>`;
-}
-document.getElementById("before-h").innerHTML=beforeHContent;
-
-// DIV ZA IKONICE U HEADERU KOJE NISU DINAMICKI ISPISANE JER JE JEDNA MORALA DA BUDE BUTTON I DA IMA DOGADJAJ NA KLIK
-// var headerIcon = [`<i id="myBtn" class="fa-solid fa-user fs-4 text-dark"></i>`,`<i class="fa-solid fa-cart-shopping fs-4"></i>`]
-
-
-// var headerIconContent = "";
-
-// for (const ico of headerIcon) {
-//     headerIconContent +=`<div class="col-lg-2">
-//     ${ico}
-//     </div>`
-// }
-// document.getElementById("header").innerHTML=headerIconContent;
 
 // REGULAR EXPRESIONS ____________________________________________________________________________________________________________________________
 
@@ -233,45 +199,44 @@ dugmeZaRegistracijuJedan.addEventListener("click",function()
 }
 );
 
-// 
+// __________________________________________________________________________________________________________________________________________________
+// PROVERA POLA REGISTRACIJA___________________________________________________________________________________________________________________________
+
+var inputRadio=document.getElementsByName("pol");
+
+var polText=document.getElementById("polText");
+
+var daLiJeCekirano=false;
+    for(let i=0; i<inputRadio.length; i++)
+    {
+        if(inputRadio[i].checked)
+        {
+            daLiJeCekirano=true;
+        }
+    }
 
 dugmeZaRegistracijuJedan.addEventListener("click",function()
 {
-    if(brojGresaka<=0){
+    if(!daLiJeCekirano)
+    {
+        polText.classList.remove("d-none");
+        brojGresaka++;
+    }
+    else if(daLiJeCekirano){
+        polText.classList.add("d-none");
+        brojGresaka=0;
+    }
+}
+)
+
+dugmeZaRegistracijuJedan.addEventListener("click",function()
+{
+    if(brojGresaka=0){
         modalRegistracija.classList.remove("modalblock");
         modalRegistracija.classList.add("modalnone");
     }
 }
 )
-
-// __________________________________________________________________________________________________________________________________________________
-// PROVERA POLA REGISTRACIJA___________________________________________________________________________________________________________________________
-
-var inputRadio=document.getElementsByTagName("pol");
-
-var polText=document.getElementById("polText");
-
-dugmeZaRegistracijuJedan.addEventListener("click",function()
-{
-    let statusVrednost = "";
-    for(let i = 0; i < inputRadio.length; i++){
-        if(inputRadio[i].checked){
-            statusVrednost = inputRadio[i].value;
-            break;
-        }
-    }
-    if(statusVrednost)
-    {
-        inputRadio.classList.add("accent-color");
-        polText.nextElementSibling.classList.remove("d-none");
-        polText.nextElementSibling.classList.add("d-block");
-    }
-    else
-    {   
-    }
-}
-)
-
 // MODAL PRIJAVA _______________________________________________________________________________________________________________________________________
 // //  __________________________________________________________________________________________________________________________________
 
@@ -355,17 +320,7 @@ dugmeZaPrijavuDva.addEventListener("click",function()
 }
 )
 
-// DIV ZA NAVIGACIJU ___________________________________________________________________________________________________________________________________
 
-var navPath = [`#dresovilink`,'#patikelink','#dodacilink','oautoru.html'];
-var navName = [`Dresovi`,`Patike`,`Dodaci`,`Autor`];
-var navContent = "";
-
-for (let i=0;i<navPath.length;i++) {
-    navContent += `<li class="nav-item"><a class="nav-link fw-bold fs-5" href="${navPath[i]}">${navName[i]}</a></li>`;
-}
-
-document.getElementById("myNav").innerHTML=navContent;
 
 // SLIDER ________________________________________________________________________________________________________________________________________
 
@@ -485,9 +440,9 @@ var dresoviContent = "";
 for (const obj of dresovi) {
     dresoviContent+=`<div class="swiper-slide">
                     <img src="${obj.path}" alt="${obj.pone}"/>
-                    <h3 class="fw-normal dres-text">${obj.h3}</h3>
-                    <p class="fw-bold text-start">${obj.pone}</p>
-                    <p class="pb-3 text-start">${obj.ptwo}</p>
+                    <h3 class="fw-normal dres-text text-sm-start text-center">${obj.h3}</h3>
+                    <p class="fw-bold text-sm-start text-center">${obj.pone}</p>
+                    <p class="pb-3 text-sm-start text-center">${obj.ptwo}</p>
                     </div>`
 }
 
@@ -512,13 +467,13 @@ let swiperDresovi = new Swiper(".mySwiperDresovi", {
             slidesPerView:3
         },
         425:{
-            slidesPerView:3
+            slidesPerView:2
         },
         375:{
-            slidesPerView:2
+            slidesPerView:1
         },
         325:{
-            slidesPerView:2
+            slidesPerView:1
         }
     }
   });
@@ -599,9 +554,9 @@ var patikeContent = "";
 for (const obj of patike) {
     patikeContent+=`<div class="swiper-slide">
                     <img src="${obj.path}" alt="${obj.pone}"/>
-                    <h3 class="fw-normal dres-text">${obj.h3}</h3>
-                    <p class="fw-bold text-start">${obj.pone}</p>
-                    <p class="pb-3 text-start">${obj.ptwo}</p>
+                    <h3 class="fw-normal dres-text text-sm-start text-center">${obj.h3}</h3>
+                    <p class="fw-bold text-sm-start text-center">${obj.pone}</p>
+                    <p class="pb-3 text-sm-start text-center">${obj.ptwo}</p>
                     </div>`
 }
 
@@ -626,13 +581,13 @@ let swiperPatike = new Swiper(".mySwiperPatike", {
             slidesPerView:3
         },
         425:{
-            slidesPerView:3
+            slidesPerView:2
         },
         375:{
-            slidesPerView:2
+            slidesPerView:1
         },
         325:{
-            slidesPerView:2
+            slidesPerView:1
         }
     }
   });
@@ -747,9 +702,9 @@ var dodaciContent = "";
 for (const obj of dodaci) {
     dodaciContent+=`<div class="swiper-slide">
                     <img src="${obj.path}" alt="${obj.pone}"/>
-                    <h3 class="fw-normal dres-text">${obj.h3}</h3>
-                    <p class="fw-bold text-start">${obj.pone}</p>
-                    <p class="pb-3 text-start">${obj.ptwo}</p>
+                    <h3 class="fw-normal dres-text text-sm-start text-center">${obj.h3}</h3>
+                    <p class="fw-bold text-sm-start text-center">${obj.pone}</p>
+                    <p class="pb-3 text-sm-start text-center">${obj.ptwo}</p>
                     </div>`
 }
 
@@ -765,31 +720,33 @@ let swiperDodaci = new Swiper(".mySwiperDodaci", {
     },
     breakpoints:{
         992:{
-            slidesPerView:5,
-            spaceBetween:30
+            slidesPerView:5
+     
         },
         768:{
-            slidesPerView:4,
-            spaceBetween:36
+            slidesPerView:4
+
         },
         600:{
-            slidesPerView:3,
-            spaceBetween:42
+            slidesPerView:3
+
         },
         425:{
-            slidesPerView:2,
-            spaceBetween:48
+            slidesPerView:2
+
         },
         375:{
-            slidesPerView:2,
-            spaceBetween:48
+            slidesPerView:1
+
         },
         325:{
-            slidesPerView:2,
-            spaceBetween:48
+            slidesPerView:1
         }
     }
   });
+
+
+}
 
 var footerLinkovi = [`Privatnost i kolačići`,`Dostava`,`Uslovi korišćenja i prodaje`,`Zamene`,`Reklamacije`,`Pravo na odustajanje`,`Namena i održavanje odeće`];
 
@@ -866,3 +823,79 @@ for (const content of footerKarticeDva) {
 }
 
 document.getElementById("footerKarticeDva").innerHTML=footerKarticeDvaContent;
+
+$(document).ready(function () {
+    setTimeout(function () {
+        $("#loader").animate(
+            {
+                opacity: 0 
+            }, 1000, function () {
+            $(this).css("display", "none");
+
+            $("body").animate({ opacity: 1 }, 1500);
+        });
+    }, 1700); 
+});
+
+$(document).ready(function () {
+    setTimeout(function () {
+        $("#loaderAutor").animate(
+            {
+                opacity: 0 
+            }, 1000, function () {
+            $(this).css("display", "none");
+
+            $("body").animate({ opacity: 1 }, 1500);
+        });
+    }, 1700); 
+});
+// DIV ZA NAVIGACIJU ___________________________________________________________________________________________________________________________________
+
+var navPath = [`#dresovilink`,'#patikelink','#dodacilink','oautoru.html'];
+var navName = [`Dresovi`,`Patike`,`Dodaci`,`Autor`];
+var navContent = "";
+
+for (let i=0;i<navPath.length;i++) {
+    navContent += `<li class="nav-item"><a class="nav-link fw-bold fs-5" href="${navPath[i]}">${navName[i]}</a></li>`;
+}
+
+document.getElementById("myNav").innerHTML=navContent;
+
+    // DIV PRE HEADERA
+    var beforeHText = [ 
+        {
+            icon:`<i class="fa-solid fa-globe mt-1 me-2 text-light mr-1"></i>`,
+            text:`Brza isporuka`
+        },
+        {
+            icon:`<i class="fa-solid fa-basketball mt-1 me-2 text-light mr-1"></i>`,
+            text:`Premium oprema`
+        },
+        {
+            icon:`<i class="fa-solid fa-rotate mt-1 me-2 text-light"></i>`,
+            text:`30-dana proces povratka`
+        }
+    ];
+    
+    var beforeHContent = "";
+    
+    for (const obj of beforeHText) {
+        beforeHContent+=`<div class="col-lg-3 d-flex justify-content-center pt-3">
+                        ${obj.icon}
+                        <p class="text-light">${obj.text}</p>
+                        </div>`;
+    }
+    document.getElementById("before-h").innerHTML=beforeHContent;
+    
+    // DIV ZA IKONICE U HEADERU KOJE NISU DINAMICKI ISPISANE JER JE JEDNA MORALA DA BUDE BUTTON I DA IMA DOGADJAJ NA KLIK
+    // var headerIcon = [`<i id="myBtn" class="fa-solid fa-user fs-4 text-dark"></i>`,`<i class="fa-solid fa-cart-shopping fs-4"></i>`]
+    
+    
+    // var headerIconContent = "";
+    
+    // for (const ico of headerIcon) {
+    //     headerIconContent +=`<div class="col-lg-2">
+    //     ${ico}
+    //     </div>`
+    // }
+    // document.getElementById("header").innerHTML=headerIconContent;

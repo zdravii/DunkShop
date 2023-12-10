@@ -1,0 +1,29 @@
+@media screen and (max-width:480px)
+{
+    #lopte,#jordanretro{
+        width: 80% !important; 
+        margin: 2% auto;
+
+    }
+    #lopte h3,#jordanretro h3{
+        font-size: 90px !important;
+        font-family: Vina;
+        text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+    }
+    #lopte{
+        padding-bottom: 10%;
+    }
+    #mesta{
+        font-size: 35px;
+    }
+    #beograd,#bec,#podgorica{
+        width: 80%;
+        margin: 5% auto !important; 
+    }   
+}
+@media screen and (max-width:375px)
+{
+    #dresovi,#patike,#dodaci{
+        width: 50% !important;
+    }
+}

@@ -2,6 +2,10 @@
     font-family:"Vina";
     src: url(font/VinaSans-Regular.ttf);
 }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 *{
     margin: 0px;
     padding: 0px;
@@ -20,7 +24,7 @@ img{
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 24%;
-    width: 48% !important;
+    width: 48%;
 }
 #jordanretro{
     background-image:url("images/jordanretro.webp");
@@ -28,7 +32,7 @@ img{
     background-size: cover;
     padding-top: 15%;
     padding-bottom: 5%;
-    width: 48% !important;
+    width: 48%;
 }
 #lopte h3,#jordanretro h3{
     font-size: 120px !important;
@@ -139,4 +143,20 @@ footer ul li a,#links a{
 }
 #Autor{
     width: 80%;
+}
+#loader{
+    position: fixed;
+     z-index: 100;
+    background: #fff;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    transition: 500ms all;
+    align-items: center;
+}
+#loader img{
+    width: 100px;
+    margin: 0px auto;
+    animation: spin 2s linear infinite;
 }
