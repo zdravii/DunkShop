@@ -94,16 +94,9 @@ dugmeZaRegistracijuJedan.addEventListener("click",function()
         inputImeRegistracija.classList.add("bordergreen");
         textImeRegistracija.classList.remove("d-block");
         textImeRegistracija.classList.add("d-none");
-        brojGresaka--;
+        brojGresaka=0;
     }
-}
-);
 
-// __________________________________________________________________________________________________________________________________________________
-// PROVERA PREZIMENA REGISTRACIJA___________________________________________________________________________________________________________________________
-
-dugmeZaRegistracijuJedan.addEventListener("click",function()
-{
     let inputPrezimeRegistracija=document.getElementById("prezimeRegistracija");
     let textPrezimeRegistracija=document.getElementById("textPrezimeRegistracija");
     if(!regexPrezime.test(inputPrezimeRegistracija.value))
@@ -119,16 +112,9 @@ dugmeZaRegistracijuJedan.addEventListener("click",function()
         inputPrezimeRegistracija.classList.add("bordergreen");
         textPrezimeRegistracija.classList.remove("d-block");
         textPrezimeRegistracija.classList.add("d-none");
-        brojGresaka--;
+        brojGresaka=0;
     }
-}
-);
 
-// __________________________________________________________________________________________________________________________________________________
-// PROVERA EMAILA REGISTRACIJA___________________________________________________________________________________________________________________________
-
-dugmeZaRegistracijuJedan.addEventListener("click",function()
-{
     let inputEmailRegistracija=document.getElementById("emailRegistracija");
     let textEmailRegistracija=document.getElementById("textEmailRegistracija");
     if(!regexMail.test(inputEmailRegistracija.value))
@@ -144,19 +130,11 @@ dugmeZaRegistracijuJedan.addEventListener("click",function()
         inputEmailRegistracija.classList.add("bordergreen");
         textEmailRegistracija.classList.remove("d-block");
         textEmailRegistracija.classList.add("d-none");
-        brojGresaka--;
+        brojGresaka=0;
     }
-}
-);
 
-// __________________________________________________________________________________________________________________________________________________
-// PROVERA SIFRE REGISTRACIJA___________________________________________________________________________________________________________________________
-
-var inputLozinkaRegistracija=document.getElementById("lozinkaRegistracija");
-
-dugmeZaRegistracijuJedan.addEventListener("click",function()
-{
     let textLozinkaRegistracija=document.getElementById("textLozinkaRegistracija");
+    let inputLozinkaRegistracija=document.getElementById("lozinkaRegistracija");
     if(!regexSifra.test(inputLozinkaRegistracija.value))
     {
         inputLozinkaRegistracija.classList.add("borderred");
@@ -170,16 +148,9 @@ dugmeZaRegistracijuJedan.addEventListener("click",function()
         inputLozinkaRegistracija.classList.add("bordergreen");
         textLozinkaRegistracija.classList.remove("d-block");
         textLozinkaRegistracija.classList.add("d-none");
-        brojGresaka--;
+        brojGresaka=0;
     }
-}
-);
 
-// __________________________________________________________________________________________________________________________________________________
-// PROVERA POTVRDA SIFRE REGISTRACIJA___________________________________________________________________________________________________________________________
-
-dugmeZaRegistracijuJedan.addEventListener("click",function()
-{
     let inputPotvrdaLozinkeRegistracija=document.getElementById("potvrdaLozinkeRegistracija");
     if(inputLozinkaRegistracija.value!=inputPotvrdaLozinkeRegistracija.value || inputPotvrdaLozinkeRegistracija.value=="")
     {
@@ -194,49 +165,40 @@ dugmeZaRegistracijuJedan.addEventListener("click",function()
         inputPotvrdaLozinkeRegistracija.classList.add("bordergreen");
         inputPotvrdaLozinkeRegistracija.nextElementSibling.classList.remove("d-block");
         inputPotvrdaLozinkeRegistracija.nextElementSibling.classList.add("d-none");
-        brojGresaka--;
+        brojGresaka=0;
     }
-}
-);
 
-// __________________________________________________________________________________________________________________________________________________
-// PROVERA POLA REGISTRACIJA___________________________________________________________________________________________________________________________
+    var inputRadio=document.getElementsByName("pol");
 
-var inputRadio=document.getElementsByName("pol");
-
-var polText=document.getElementById("polText");
-
-var daLiJeCekirano=false;
-    for(let i=0; i<inputRadio.length; i++)
-    {
-        if(inputRadio[i].checked)
+    var polText=document.getElementById("polText");
+    
+    var daLiJeCekirano=false;
+        for(let i=0; i<inputRadio.length; i++)
         {
-            daLiJeCekirano=true;
+            if(inputRadio[i].checked)
+            {
+                daLiJeCekirano=true;
+            }
         }
-    }
 
-dugmeZaRegistracijuJedan.addEventListener("click",function()
-{
     if(!daLiJeCekirano)
     {
         polText.classList.remove("d-none");
+        polText.classList.add("d-block");
         brojGresaka++;
     }
     else if(daLiJeCekirano){
+        polText.classList.remove("d-block");
         polText.classList.add("d-none");
         brojGresaka=0;
     }
-}
-)
-
-dugmeZaRegistracijuJedan.addEventListener("click",function()
-{
     if(brojGresaka=0){
         modalRegistracija.classList.remove("modalblock");
         modalRegistracija.classList.add("modalnone");
     }
 }
-)
+);
+
 // MODAL PRIJAVA _______________________________________________________________________________________________________________________________________
 // //  __________________________________________________________________________________________________________________________________
 
@@ -262,9 +224,8 @@ dugmeZaRegistracijuDva.addEventListener("click",function()
 }
 )
 
-// // PROVERA PODATAKA FORME ZA PRIJAVU ___________________________________________________________________________________________________________________________
-
-// // EMAIL  ______________________________________________________________________________________________________________________________________________
+// PROVERA PODATAKA FORME ZA PRIJAVU ___________________________________________________________________________________________________________________________
+// ______________________________________________________________________________________________________________________________________________________
 
 dugmeZaPrijavuDva.addEventListener("click",function()
 {
@@ -284,13 +245,7 @@ dugmeZaPrijavuDva.addEventListener("click",function()
         textEmailPrijava.classList.add("d-none");
         brojGresakaPrijava=0;
     }
-}
-)
 
-// // SIFRA  _____________________________________________________________________________________________________________________________________________
-
-dugmeZaPrijavuDva.addEventListener("click",function()
-{
     let lozinkaPrijava=document.getElementById("lozinkaPrijava");
     let textLozinkaPrijava=document.getElementById("textLozinkaPrijava");
     if(!regexSifra.test(lozinkaPrijava.value))
@@ -307,11 +262,7 @@ dugmeZaPrijavuDva.addEventListener("click",function()
         textLozinkaPrijava.classList.add("d-none");
         brojGresakaPrijava=0;
     }
-}
-)
 
-dugmeZaPrijavuDva.addEventListener("click",function()
-{
     if(brojGresakaPrijava==0)
     {
         modalPrijava.classList.remove("modalblock");
@@ -319,8 +270,6 @@ dugmeZaPrijavuDva.addEventListener("click",function()
     }
 }
 )
-
-
 
 // SLIDER ________________________________________________________________________________________________________________________________________
 
@@ -369,69 +318,69 @@ var swiper = new Swiper(".mySwiper", {
 var dresovi = [
     {
         path:`assets/images/dresjedan.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`NBA JERSEY GOLDEN STATE WARRIORS`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`NBA JERSEY GOLDEN STATE WARRIORS`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/dresdva.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`UTAH JAZZ #12 JOHN STOCKTON 'WHITE'`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`UTAH JAZZ #12 JOHN STOCKTON 'WHITE'`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/drestri.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`SWINGMAN JERSEY DETROIT PISTONS`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`SWINGMAN JERSEY DETROIT PISTONS`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/drescetiri.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`NBA SWINGMAN HOME JERSEY 98 GRIZZLIES `,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`NBA SWINGMAN HOME JERSEY 98 GRIZZLIES `,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/drespet.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`NBA SWINGMAN ROAD JERSEY NEW JERSEY NETS`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`NBA SWINGMAN ROAD JERSEY NEW JERSEY NETS`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/dressest.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`NBA SWINGMAN JERSEY ORLANDO MAGIC`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`NBA SWINGMAN JERSEY ORLANDO MAGIC`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/dressedam.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`ORLANDO MAGIC #1 AFERNEE HARDAWAY`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`ORLANDO MAGIC #1 AFERNEE HARDAWAY`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/dresosam.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`NBA SWINGMAN JERSEY SAN ANTONIO SPURS`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`NBA SWINGMAN JERSEY SAN ANTONIO SPURS`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/dresdevet.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`NBA SWINGMAN JERSEY BULLS 97`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`NBA SWINGMAN JERSEY BULLS 97`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/dresdeset.jpg`,
-        h3:`Mitchell & Ness`,
-        pone:`NBA SWINGMAN JERSEY MINNESOTA TIMBERWOLVES`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`NBA SWINGMAN JERSEY MINNESOTA TIMBERWOLVES`,
+        price:`13.790 RSD`
     },
     {
         path:`assets/images/dresjedanaest.png`,
-        h3:`Mitchell & Ness`,
-        pone:`SWINGMAN JERSEY SEATTLE SUPERSONICS`,
-        ptwo:`13.790 RSD`
+        brend:`Mitchell & Ness`,
+        name:`SWINGMAN JERSEY SEATTLE SUPERSONICS`,
+        price:`13.790 RSD`
     }
 ]
 
@@ -439,10 +388,10 @@ var dresoviContent = "";
 
 for (const obj of dresovi) {
     dresoviContent+=`<div class="swiper-slide">
-                    <img src="${obj.path}" alt="${obj.pone}"/>
-                    <h3 class="fw-normal dres-text text-sm-start text-center">${obj.h3}</h3>
-                    <p class="fw-bold text-sm-start text-center">${obj.pone}</p>
-                    <p class="pb-3 text-sm-start text-center">${obj.ptwo}</p>
+                    <img src="${obj.path}" alt="${obj.name}"/>
+                    <h3 class="fw-normal dres-text text-sm-start text-center">${obj.brend}</h3>
+                    <p class="fw-bold text-sm-start text-center">${obj.name}</p>
+                    <p class="pb-3 text-sm-start text-center">${obj.price}</p>
                     </div>`
 }
 
@@ -483,69 +432,69 @@ let swiperDresovi = new Swiper(".mySwiperDresovi", {
 var patike = [
     {
         path:`assets/images/patikejedan.png`,
-        h3:`Jordan`,
-        pone:`WMNS JORDAN MVP 678 'DESERT SAND'`,
-        ptwo:`22.290 RSD`
+        brend:`Jordan`,
+        name:`WMNS JORDAN MVP 678 'DESERT SAND'`,
+        price:`22.290 RSD`
     },
     {
         path:`assets/images/patikedva.png`,
-        h3:`Jordan`,
-        pone:`JORDAN MVP 678 'CARDINAL'`,
-        ptwo:`22.290 RSD`
+        brend:`Jordan`,
+        name:`JORDAN MVP 678 'CARDINAL'`,
+        price:`22.290 RSD`
     },
     {
         path:`assets/images/patiketri.png`,
-        h3:`Jordan`,
-        pone:`JORDAN MVP 678 'RAPTORS'`,
-        ptwo:`22.290 RSD`
+        brend:`Jordan`,
+        name:`JORDAN MVP 678 'RAPTORS'`,
+        price:`22.290 RSD`
     },
     {
         path:`assets/images/patikecetiri.jpg`,
-        h3:`Jordan`,
-        pone:`JORDAN JUMPMAN TWO TREY 'BRED'`,
-        ptwo:`19.690 RSD`
+        brend:`Jordan`,
+        name:`JORDAN JUMPMAN TWO TREY 'BRED'`,
+        price:`19.690 RSD`
     },
     {
         path:`assets/images/patikepet.jpg`,
-        h3:`Jordan`,
-        pone:`AIR JORDAN 38 'AQUA'`,
-        ptwo:`26.290 RSD`
+        brend:`Jordan`,
+        name:`AIR JORDAN 38 'AQUA'`,
+        price:`26.290 RSD`
     },
     {
         path:`assets/images/patikesest.jpg`,
-        h3:`Jordan`,
-        pone:`AIR JORDAN 38 'FADEAWAY'`,
-        ptwo:`26.290 RSD`
+        brend:`Jordan`,
+        name:`AIR JORDAN 38 'FADEAWAY'`,
+        price:`26.290 RSD`
     },
     {
         path:`assets/images/patikesedam.png`,
-        h3:`Jordan`,
-        pone:`JORDAN 38 'FUNDAMENTAL'`,
-        ptwo:`26.290 RSD`
+        brend:`Jordan`,
+        name:`JORDAN 38 'FUNDAMENTAL'`,
+        price:`26.290 RSD`
     },
     {
         path:`assets/images/patikeosam.jpg`,
-        h3:`Jordan`,
-        pone:`AIR JORDAN 38 'FIBA'`,
-        ptwo:`26.290 RSD`
+        brend:`Jordan`,
+        name:`AIR JORDAN 38 'FIBA'`,
+        price:`26.290 RSD`
     },
     {
         path:`assets/images/patikedevet.png`,
-        h3:`Jordan`,
-        pone:`LUKA 2 'SPACE HUNTER'`,
-        ptwo:`17.090 RSD`
+        brend:`Jordan`,
+        name:`LUKA 2 'SPACE HUNTER'`,
+        price:`17.090 RSD`
     },
     {
         path:`assets/images/patikedeset.png`,
-        h3:`Jordan`,
-        pone:`JORDAN PRO STRONG 'PLAYOFFS'`,
-        ptwo:`19.690 RSD`
+        brend:`Jordan`,
+        name:`JORDAN PRO STRONG 'PLAYOFFS'`,
+        price:`19.690 RSD`
     },
     {
         path:`assets/images/patikejedanaest.png`,
-        h3:`Jordan`,
-        pone:`JORDAN ONE TAKE 4 'DARK BURGUNDY`,
-        ptwo:`13.190 RSD`
+        brend:`Jordan`,
+        name:`JORDAN ONE TAKE 4 'DARK BURGUNDY`,
+        price:`13.190 RSD`
     }
 ]
 
@@ -553,10 +502,10 @@ var patikeContent = "";
 
 for (const obj of patike) {
     patikeContent+=`<div class="swiper-slide">
-                    <img src="${obj.path}" alt="${obj.pone}"/>
-                    <h3 class="fw-normal dres-text text-sm-start text-center">${obj.h3}</h3>
-                    <p class="fw-bold text-sm-start text-center">${obj.pone}</p>
-                    <p class="pb-3 text-sm-start text-center">${obj.ptwo}</p>
+                    <img src="${obj.path}" alt="${obj.name}"/>
+                    <h3 class="fw-normal dres-text text-sm-start text-center">${obj.brend}</h3>
+                    <p class="fw-bold text-sm-start text-center">${obj.name}</p>
+                    <p class="pb-3 text-sm-start text-center">${obj.price}</p>
                     </div>`
 }
 
@@ -615,7 +564,7 @@ var mesta = [
 var mestaContent="";
 
 for (const obj of mesta) {
-    mestaContent += `<div class="col-10 col-md-3 p-0 m-0" id="${obj.id}"><div class="tamno"><h3 class="text-light fs-1">${obj.h3}</h3><p class="text-light fs-2">${obj.p}</p></div></div>`
+    mestaContent += `<div class="col-10 col-md-3 p-0 m-0" id="${obj.id}"><div class="tamno"><h3 class="text-light fs-1">${obj.h3}</brend><p class="text-light fs-2">${obj.p}</p></div></div>`
 }
 
 document.getElementById("mestajedan").innerHTML=mestaContent;
@@ -625,75 +574,75 @@ document.getElementById("mestajedan").innerHTML=mestaContent;
 var dodaci = [
     {
         path:`assets/images/dodacijedan.png`,
-        h3:`Under Armour`,
-        pone:`UA PERFORMANCE HEADBAND 'BLACK'`,
-        ptwo:`1.090 RSD`
+        brend:`Under Armour`,
+        name:`UA PERFORMANCE HEADBAND 'BLACK'`,
+        price:`1.090 RSD`
     },
     {
         path:`assets/images/dodacidva.png`,
-        h3:`Under Armour`,
-        pone:`UA PERFORMANCE WRISTBANDS 'BLACK'`,
-        ptwo:`990 RSD`
+        brend:`Under Armour`,
+        name:`UA PERFORMANCE WRISTBANDS 'BLACK'`,
+        price:`990 RSD`
     },
     {
         path:`assets/images/dodacitri.png`,
-        h3:`Under Armour`,
-        pone:`UA HEATGEAR CREW 3PK 'STEEL / WHITE'`,
-        ptwo:`2.090 RSD`
+        brend:`Under Armour`,
+        name:`UA HEATGEAR CREW 3PK 'STEEL / WHITE'`,
+        price:`2.090 RSD`
     },
     {
         path:`assets/images/dodacicetiri.png`,
-        h3:`Under Armour`,
-        pone:`UA HEATGEAR LOW CUT 'GRAY/WHITE/BLACK'`,
-        ptwo:`1.790 RSD`
+        brend:`Under Armour`,
+        name:`UA HEATGEAR LOW CUT 'GRAY/WHITE/BLACK'`,
+        price:`1.790 RSD`
     },
     {
         path:`assets/images/dodacipet.png`,
-        h3:`Adidas`,
-        pone:`3-STRIPES LINEAR HALF-CREW CUSHIONED SOCKS 'WHITE'`,
-        ptwo:`1.190 RSD`
+        brend:`Adidas`,
+        name:`3-STRIPES LINEAR HALF-CREW CUSHIONED SOCKS 'WHITE'`,
+        price:`1.190 RSD`
     },
     {
         path:`assets/images/dodacisest.jpg`,
-        h3:`Nike`,
-        pone:`FREAK EVERYDAY PLUS CUSHIONED BASKETBALL CREW SOCKS 'WHITE'`,
-        ptwo:`1.992 RSD`
+        brend:`Nike`,
+        name:`FREAK EVERYDAY PLUS CUSHIONED BASKETBALL CREW SOCKS 'WHITE'`,
+        price:`1.992 RSD`
     },
     {
         path:`assets/images/dodacisedam.jpg`,
-        h3:`Nike`,
-        pone:`FREAK EVERYDAY PLUS CUSHIONED BASKETBALL CREW SOCKS 'BLACK'`,
-        ptwo:`1.992 RSD`
+        brend:`Nike`,
+        name:`FREAK EVERYDAY PLUS CUSHIONED BASKETBALL CREW SOCKS 'BLACK'`,
+        price:`1.992 RSD`
     },
     {
         path:`assets/images/dodaciosam.jpg`,
-        h3:`Adidas`,
-        pone:`ADIZERO ANKLE SOCKS 'WHITE'`,
-        ptwo:`1.990 RSD`
+        brend:`Adidas`,
+        name:`ADIZERO ANKLE SOCKS 'WHITE'`,
+        price:`1.990 RSD`
     },
     {
         path:`assets/images/dodacidevet.jpg`,
-        h3:`Wilson`,
-        pone:`NBA AUTHENTIC`,
-        ptwo:`8.290 RSD`
+        brend:`Wilson`,
+        name:`NBA AUTHENTIC`,
+        price:`8.290 RSD`
     },
     {
         path:`assets/images/dodacideset.png`,
-        h3:`Nike`,
-        pone:`NIKE UTILITY TRAINING GYMSACK 'BLACK'`,
-        ptwo:`3.390 RSD`
+        brend:`Nike`,
+        name:`NIKE UTILITY TRAINING GYMSACK 'BLACK'`,
+        price:`3.390 RSD`
     },
     {
         path:`assets/images/dodacijedanaest.png`,
-        h3:`Nike`,
-        pone:`UTILITY POWER TRAINING DUFFEL BAG 'BLACK'`,
-        ptwo:`8.190 RSD`
+        brend:`Nike`,
+        name:`UTILITY POWER TRAINING DUFFEL BAG 'BLACK'`,
+        price:`8.190 RSD`
     },
     {
         path:`assets/images/dodacidvanaest.png`,
-        h3:`Nike`,
-        pone:`BRASILIA 9.5 TRAINING DUFFEL BAG 'BLACK'`,
-        ptwo:`5.490 RSD`
+        brend:`Nike`,
+        name:`BRASILIA 9.5 TRAINING DUFFEL BAG 'BLACK'`,
+        price:`5.490 RSD`
     }
 ]
 
@@ -701,10 +650,10 @@ var dodaciContent = "";
 
 for (const obj of dodaci) {
     dodaciContent+=`<div class="swiper-slide">
-                    <img src="${obj.path}" alt="${obj.pone}"/>
+                    <img src="${obj.path}" alt="${obj.name}"/>
                     <h3 class="fw-normal dres-text text-sm-start text-center">${obj.h3}</h3>
-                    <p class="fw-bold text-sm-start text-center">${obj.pone}</p>
-                    <p class="pb-3 text-sm-start text-center">${obj.ptwo}</p>
+                    <p class="fw-bold text-sm-start text-center">${obj.name}</p>
+                    <p class="pb-3 text-sm-start text-center">${obj.price}</p>
                     </div>`
 }
 
